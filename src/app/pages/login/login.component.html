@@ -4,16 +4,18 @@ primaryBttnText="Login Now"
 secondaryBttnText="Signup Now"
 >
     <form [formGroup]="loginForm">
-        <app-primary-input  
-        formName="email"
+        <app-primary-input
+        formControlName = 'email'  
+        inputName="email"
         type="email"
         label="email"
         placeholder="test@gmail.com"
         >
         <img src="/assets/svg/iconEmail.svg">
     </app-primary-input>
-    <app-primary-input  
-        formName="password"
+    <app-primary-input
+        formControlName='password'
+        inputName="password"
         type="password"
         label="Your Password"
         placeholder="password"

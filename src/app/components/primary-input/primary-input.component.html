@@ -1,7 +1,7 @@
 <div class="inputWrapper">
-    <label [for]="formName">{{label}}</label>
+    <label [for]="inputName">{{label}}</label>
     <div class="inputContent">
-        <input [type]="type" [formControlName]="formName" [placeholder]="placeholder"/>
+        <input [type]="type" [value]="value" [placeholder]="placeholder" (input)="onInput($event)"/>
         <div class="icon">
             <ng-content></ng-content>
         </div>
