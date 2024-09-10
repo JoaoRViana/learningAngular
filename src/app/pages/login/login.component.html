@@ -2,10 +2,12 @@
 title="Login into your account"
 primaryBttnText="Login Now"
 secondaryBttnText="Signup Now"
+(submit)="submit()"
+(navigate)="navigate()"
 >
     <form [formGroup]="loginForm">
         <app-primary-input
-        formControlName = 'email'  
+        formControlName = "email"  
         inputName="email"
         type="email"
         label="email"
@@ -14,7 +16,7 @@ secondaryBttnText="Signup Now"
         <img src="/assets/svg/iconEmail.svg">
     </app-primary-input>
     <app-primary-input
-        formControlName='password'
+        formControlName="password"
         inputName="password"
         type="password"
         label="Your Password"

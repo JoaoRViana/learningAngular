@@ -3,10 +3,10 @@
         <img src="/assets/svg/logo.svg"/>
         <h2>{{title}}</h2>
         <ng-content>
-            
+
         </ng-content>
         <div class="bttnWrapper">
-            <button class="bttnPrimary">{{primaryBttnText}}</button>
+            <button class="bttnPrimary" (click)="submit()">{{primaryBttnText}}</button>
             <div class="divider">
                 <div></div>
                 <span>
@@ -14,7 +14,7 @@
                 </span>
                 <div></div>
             </div>
-            <button class="bttnSecondary">{{secondaryBttnText}}</button>
+            <button class="bttnSecondary" (click)="navigate()">{{secondaryBttnText}}</button>
         </div>
     </section>
     <section class="main-section">

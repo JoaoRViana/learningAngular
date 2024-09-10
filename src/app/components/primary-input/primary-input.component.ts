@@ -27,7 +27,7 @@ export class PrimaryInputComponent implements ControlValueAccessor {
   onTouched:any=()=>{}
   onInput(event:Event){
     const value= (event.target as HTMLInputElement).value
-    this.onChange = value
+    this.onChange(value)
   }
   writeValue(value: any): void {
       this.value = value
@@ -42,4 +42,4 @@ export class PrimaryInputComponent implements ControlValueAccessor {
   setDisabledState(isDisabled: boolean): void {
       
   }
-}
+} 
