@@ -30,7 +30,7 @@ export class UserComponent {
   @Input()userEmail:string|null=sessionStorage.getItem('userEmail')
 
   edit(){
-    this.userService.edit(this.userEmail,this.editForm.value.name,this.editForm.value.newPassword).subscribe({
+    this.userService.edit(this.userEmail,this.editForm.value.name,this.editForm.value.password,this.editForm.value.newPassword).subscribe({
       next:()=>{this.toastr.success("Edição feita com sucesso!")
         this.router.navigate(['/login'])
       },error:()=>this.toastr.error("Informação inválida!")
