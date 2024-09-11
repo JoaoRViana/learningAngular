@@ -9,32 +9,38 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [DefaultLoginLayoutComponent,ReactiveFormsModule,PrimaryInputComponent],
-  providers:[LoginService],
+  imports: [DefaultLoginLayoutComponent, ReactiveFormsModule, PrimaryInputComponent],
+  providers: [LoginService],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  loginForm!:FormGroup;
+  loginForm!: FormGroup;
+
   constructor(
-    private router:Router,
-    private loginService:LoginService,
-    private toastr:ToastrService
-  ){
+    private router: Router,
+    private loginService: LoginService,
+    private toastr: ToastrService
+  ) {
     this.loginForm = new FormGroup({
-      email:new FormControl('',[Validators.required,Validators.email]),
-      password:new FormControl('',[Validators.required,Validators.minLength(6)])
-    })
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)])
+    });
   }
-  submit(){
-    this.loginService.login(this.loginForm.value.email,this.loginForm.value.password).subscribe({
-      next:()=>{this.toastr.success("Login feito com sucesso!")
-        this.router.navigate(['/user'])
+
+  submit() {
+    this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
+      next: () => {
+        this.toastr.success("Login successful!");
+        this.router.navigate(['/user']);
       },
-      error:()=>this.toastr.error("Woops, something is wrong, try again later!")
-    })
+      error: () => {this.toastr.error("Woops, something is wrong, try again later!")
+        this.loginForm.reset();
+      }
+    });
   }
-  navigate(){
-    this.router.navigate(["/signup"])
+
+  navigate() {
+    this.router.navigate(["/signup"]);
   }
 }

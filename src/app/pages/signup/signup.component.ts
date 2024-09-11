@@ -9,34 +9,45 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [DefaultLoginLayoutComponent,ReactiveFormsModule,PrimaryInputComponent],
-  providers:[LoginService],
+  imports: [DefaultLoginLayoutComponent, ReactiveFormsModule, PrimaryInputComponent],
+  providers: [LoginService],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
-  signupForm!:FormGroup;
+  signupForm!: FormGroup;
   constructor(
-    private router:Router,
-    private loginService:LoginService,
-    private toastr:ToastrService
-  ){
+    private router: Router,
+    private loginService: LoginService,
+    private toastr: ToastrService
+  ) {
     this.signupForm = new FormGroup({
-      name:new FormControl('',[Validators.required,Validators.minLength(3)]),
-      email:new FormControl('',[Validators.required,Validators.email]),
-      password:new FormControl('',[Validators.required,Validators.minLength(6)]),
-      passwordConfirm:new FormControl('',[Validators.required,Validators.minLength(6)])
+      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      passwordConfirm: new FormControl('', [Validators.required, Validators.minLength(6)])
+    });
+  }
 
-    })
+  submit() {
+    if (this.signupForm.value.password !== this.signupForm.value.passwordConfirm) {
+      this.toastr.error("Some information is invalid!");
+      this.signupForm.reset();
+    } else {
+      this.loginService.register(this.signupForm.value.name, this.signupForm.value.email, this.signupForm.value.password).subscribe({
+        next: () => {
+          this.toastr.success("Registration successful!");
+          this.router.navigate(["/login"]);
+        },
+        error: () => {this.toastr.error("Some information is invalid!")
+          this.signupForm.reset();
+        }
+        
+      });
+    }
   }
-  submit(){
-    this.loginService.register(this.signupForm.value.name,this.signupForm.value.email,this.signupForm.value.password).subscribe({
-      next:()=>{this.toastr.success("Registro feito com sucesso!")
-        this.router.navigate(["/login"])
-      },error:()=>this.toastr.error("Alguma informação está inválida!")
-    })
-  }
-  navigate(){
-    this.router.navigate(["/login"])
+
+  navigate() {
+    this.router.navigate(["/login"]);
   }
 }
