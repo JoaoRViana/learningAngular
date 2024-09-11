@@ -33,10 +33,10 @@
     </app-primary-input>
     </form>
     <div class="buttonContainer">
-        <button [disabled]='!editForm.valid' class="editButton">
+        <button [disabled]='!editForm.valid' class="editButton" (click)="edit()">
             Edit
         </button>
-        <button class="deleteButton">
+        <button class="deleteButton" (click)="delete()">
             Delete Account
         </button>
     </div>

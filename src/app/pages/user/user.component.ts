@@ -30,6 +30,18 @@ export class UserComponent {
   @Input()userEmail:string|null=sessionStorage.getItem('userEmail')
 
   edit(){
-    
+    this.userService.edit(this.userEmail,this.editForm.value.name,this.editForm.value.newPassword).subscribe({
+      next:()=>{this.toastr.success("Edição feita com sucesso!")
+        this.router.navigate(['/login'])
+      },error:()=>this.toastr.error("Informação inválida!")
+    })
+  }
+
+  delete(){
+    this.userService.delete(this.userEmail).subscribe({
+      next:()=>{this.toastr.success("Usuário Deletado")
+        this.router.navigate(['/login'])
+      },error:()=>this.toastr.error("Não foi possível deletar este usuário!")
+    })
   }
 }
