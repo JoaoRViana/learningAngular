@@ -30,9 +30,10 @@ export class SignupComponent {
     })
   }
   submit(){
-    this.loginService.login(this.signupForm.value.email,this.signupForm.value.password).subscribe({
-      next:()=>this.toastr.success("Login feito com sucesso!"),
-      error:()=>this.toastr.error("Woops, something is wrong, try again later!")
+    this.loginService.register(this.signupForm.value.name,this.signupForm.value.email,this.signupForm.value.password).subscribe({
+      next:()=>{this.toastr.success("Registro feito com sucesso!")
+        this.router.navigate(["/login"])
+      },error:()=>this.toastr.error("Alguma informação está inválida!")
     })
   }
   navigate(){
