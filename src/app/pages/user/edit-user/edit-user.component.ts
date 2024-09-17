@@ -43,13 +43,7 @@ export class EditUserComponent {
     });
   }
 
-  delete() {
-    this.userService.delete(this.userEmail).subscribe({
-      next: () => {
-        this.toastr.success("User deleted successfully!");
-        this.router.navigate(['/login']);
-      },
-      error: () => this.toastr.error("Unable to delete this user!")
-    });
+  navigate() {
+    this.router.navigate(['/user']);
   }
 }

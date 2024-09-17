@@ -15,9 +15,10 @@ export const routes: Routes = [
     },{
         path:'user',
         component:UserComponent,
-        canActivate:[AuthGuard  ],
-        children:[
-            {path:'edit',component:EditUserComponent}
-        ]
+        canActivate:[AuthGuard],
+    },{
+        path:'user/edit',
+        component:EditUserComponent,
+        canActivate:[AuthGuard],
     }
 ];
