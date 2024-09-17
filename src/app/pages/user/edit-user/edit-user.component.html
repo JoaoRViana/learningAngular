@@ -1,0 +1,43 @@
+<main>
+    <div class="title">
+        <h1>Edit User</h1>
+        <h1>{{userEmail}}</h1>
+    </div>
+    <form [formGroup]="editForm">
+        <app-primary-input
+        formControlName = "name"  
+        inputName="name"
+        type="text"
+        label="Name"
+        placeholder={{userName}}
+        >
+        <img src="/assets/svg/iconEmail.svg">
+    </app-primary-input>
+    <app-primary-input
+        formControlName="password"
+        inputName="password"
+        type="password"
+        label="Old Password"
+        placeholder="Enter your password"
+        >
+        <img src="/assets/svg/iconPassword.svg">
+    </app-primary-input>
+    <app-primary-input
+        formControlName="newPassword"
+        inputName="newPassword"
+        label="New password"
+        type="password"
+        placeholder="your new password"
+        >
+        <img src="/assets/svg/iconPassword.svg">
+    </app-primary-input>
+    </form>
+    <div class="buttonContainer">
+        <button [disabled]='!editForm.valid' class="editButton" (click)="edit()">
+            Edit
+        </button>
+        <button class="deleteButton" (click)="delete()">
+            Delete Account
+        </button>
+    </div>
+</main>

@@ -37,7 +37,7 @@ export class SignupComponent {
       this.loginService.register(this.signupForm.value.name, this.signupForm.value.email, this.signupForm.value.password).subscribe({
         next: () => {
           this.toastr.success("Registration successful!");
-          this.router.navigate(["/login"]);
+          this.router.navigate(["/"]);
         },
         error: () => {this.toastr.error("Some information is invalid!")
           this.signupForm.reset();
@@ -48,6 +48,6 @@ export class SignupComponent {
   }
 
   navigate() {
-    this.router.navigate(["/login"]);
+    this.router.navigate(["/"]);
   }
 }
