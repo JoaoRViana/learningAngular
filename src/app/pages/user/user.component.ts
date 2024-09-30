@@ -1,5 +1,6 @@
 import { Component, Input, input } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-user',
@@ -10,7 +11,8 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class UserComponent {
   constructor(
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ){}
 
 
@@ -18,5 +20,9 @@ export class UserComponent {
 
   navigate(){
     this.router.navigate(['/user/edit'])
+  }
+  logout(){
+    this.loginService.logout()
+    this.router.navigate(['/'])
   }
 }

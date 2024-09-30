@@ -2,7 +2,13 @@
     <div>
         <h1>Welcome {{userName}}</h1>
     </div>
-    <button (click)="navigate()">
-        Edit Profile
-    </button>
+    <div class="buttonContainer">
+        <button class="editButton" (click)="navigate()">
+            Edit Profile
+        </button>
+        <button class="logoutButton" (click)="logout()">
+            Logout
+        </button>
+    </div>
+
 </main>

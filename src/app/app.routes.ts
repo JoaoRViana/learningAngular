@@ -20,5 +20,5 @@ export const routes: Routes = [
         path:'user/edit',
         component:EditUserComponent,
         canActivate:[AuthGuard],
-    }
+    },
 ];

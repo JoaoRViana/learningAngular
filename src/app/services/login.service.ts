@@ -28,4 +28,9 @@ export class LoginService {
       password
     })
   }
+  logout(){
+    sessionStorage.setItem("auth-token",'')
+    sessionStorage.setItem("userName",'')
+    sessionStorage.setItem("userEmail",'')
+  }
 }

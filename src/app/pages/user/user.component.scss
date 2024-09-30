@@ -11,15 +11,29 @@ main{
         font-weight: bold;
     }
 
+    .buttonContainer{
+        padding: 20px;
+        display: flex;
+        justify-content: space-around;
+        width: 600px;
+    }
+
     button{
-        border-color: 1px solid $primary-color;
-        color: $primary-color;
         border-radius: 8px;
         font-size: 16px;
         font-weight: 500;
         border: none;
-        background-color: transparent;
         padding:12px 24px;
         cursor: pointer;
+    }
+    .editButton{
+        border-color: 1px solid $primary-color;
+        color: $primary-color;
+        background-color: transparent;
+
+    }
+    .logoutButton{
+        background-color: rgb(211, 36, 48);
+
     }
 }
